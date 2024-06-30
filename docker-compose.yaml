@@ -1,0 +1,16 @@
+services:
+  grpc:
+    image: tonic-grpc:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "50051:50051"
+
+  envoy:
+    image: envoyproxy/envoy:v1.30-latest
+    volumes:
+      - ./envoy.yaml:/etc/envoy/envoy.yaml
+    ports:
+      - "8080:8080"
+      - "9901:9901" # Admin interface
