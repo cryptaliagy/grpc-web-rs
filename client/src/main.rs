@@ -3,7 +3,11 @@ use protobuf_build::helloworld::HelloRequest;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let mut client = GreeterClient::connect("http://[::1]:50051").await?;
+    let args: Vec<String> = std::env::args().collect();
+
+    let host = if args.len() > 1 { &args[1] } else { "[::1]" };
+
+    let mut client = GreeterClient::connect(format!("http://{host}:50051")).await?;
 
     let request = tonic::Request::new(HelloRequest {
         name: "Tonic".into(),
