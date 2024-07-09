@@ -36,7 +36,7 @@ static_resources:
                               forward_not_matching_preflights: false
                               allow_private_network_access: true
                 http_filters:
-                  - name: envoy.cors
+                  - name: envoy.filters.http.cors
                     typed_config:
                       "@type": type.googleapis.com/envoy.extensions.filters.http.cors.v3.Cors
                   - name: envoy.grpc_web
