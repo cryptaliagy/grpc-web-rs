@@ -36,12 +36,12 @@ static_resources:
                               forward_not_matching_preflights: false
                               allow_private_network_access: true
                 http_filters:
-                  - name: envoy.grpc_web
-                    typed_config:
-                      "@type": type.googleapis.com/envoy.extensions.filters.http.grpc_web.v3.GrpcWeb
                   - name: envoy.cors
                     typed_config:
                       "@type": type.googleapis.com/envoy.extensions.filters.http.cors.v3.Cors
+                  - name: envoy.grpc_web
+                    typed_config:
+                      "@type": type.googleapis.com/envoy.extensions.filters.http.grpc_web.v3.GrpcWeb
                   - name: envoy.filters.http.router
                     typed_config:
                       "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
